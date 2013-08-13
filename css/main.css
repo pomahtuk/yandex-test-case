@@ -157,11 +157,42 @@ header .user a:hover{
     padding: 20px;
 }
 
+.search{
+    padding: 20px 0px 40px 0px;
+    width: 390px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search__input{
+    border: none;
+    display: block;
+    width: 370px;
+    height: 30px;
+    border-radius: 30px;
+    background: #e5e5e5;
+    padding: 0px 10px;
+
+    -webkit-box-shadow: inset 0px 1px 1px  rgba(0, 0, 0, 0.3);        
+    box-shadow: inset 0px 1px 1px  rgba(0, 0, 0, 0.3);
+
+}
+
+.search__input:focus{
+    outline: none;
+}
+
+.search__icon{
+    position: absolute;
+    top: 27px;
+    right: 7px;
+    color: #a2a2a2;
+}
+
 .presentation{
     width: 234px;
     height: 134px;
     position: relative;
-    cursor: pointer;
     text-align: center;
     background: url('../img/presentation_index.png');
     background-size: 100%;
@@ -182,16 +213,27 @@ header .user a:hover{
 }
 
 .presentation__actions{
-    width: 190px;
+    width: 100%;
+    height: 134px;
     position: absolute;
-    padding: 0px 5px;
     left: 0px;
-    bottom: 0px;
-    display: none;
-    text-align: left;
+    top: 0px;
+    font-size: 39px;
+    color: #fff;
+    background: rgba(0,0,0, 0.8);
+    border-radius: 5px;
+    
+    display: block;
+    -webkit-transition: opacity 1s ease-out;
+    opacity: 0; 
+    height: 0;
+    overflow: hidden;
+}
 
-    border-bottom-left-radius:  5px;
-    border-bottom-right-radius:  5px;
+.presentation__link{
+    margin: 0 18px 0px 19px;
+    position: relative;
+    top: 40px;
 }
 
 .presentation__maintitle{
@@ -214,64 +256,135 @@ header .user a:hover{
     background: #bfbfbd;
 }
 
-.presentation__link{
-    display: block;
-    float: right;
-    margin: 0px 2.5px;
+.presentation__description{
+    margin: 25px 0px 0px 0px;
+    font-size: 11px;
+    text-align: center;
 }
 
 .presentation__add{
-    color: #42995A;
-    font-size: 50px;
-    margin-top: 30px;
+    color: #b5b5b5;
+    font-size: 40px;
+    margin-top: 35px;
 }
 
 .presentation.empty{
-    opacity: 0.5;
+    background: transparent;
+    width: 240px;
+    height: 130px;
+    border: 2px dashed #b5b5b5;
+}
+
+.presentation.empty:after{
+    display: none;
 }
 
 .presentation.empty:hover{
     opacity: 1;
 }
 
-/*.presentation:hover .presentation__play{
-    display: block;
-}
 
 .presentation:hover .presentation__actions{
-    display: block;
+    height: 134px;
+    opacity: 1;
 }
 
-.presentation:hover .presentation__maintitle{
-    display: none;
-}*/
 
 aside{
-    width: 270px;
-    background: #666;
+    width: 225px;
     min-height: 100%;
     position: absolute;
     top:0px;
     left: 0px;
+    background:  url('../img/aside_background.png');
+
+    -webkit-box-shadow:  0px 1px 3px  rgba(0, 0, 0, 0.25);
+    box-shadow:  0px 1px 3px  rgba(0, 0, 0, 0.25);
+
 }
 
+aside h2{
+    font-size: 12px;
+    padding-left: 23px;
+    margin: 85px 0px 0px 0px;
+    color: #333333;
+    text-transform: uppercase;
+}
 
 .slides{
     list-style: none;
     padding: 0px;
-    margin: 70px 0px 0px 0px;
+    margin: 0;
     text-align: center;
 }
 
-.slides__slide{
-    width: 234px;
-    height: 134px;
-    background: #fff;
-    margin: 10px 0px;
+.slides__slidewrapper:hover{
+    background: rgba(0,0,0, 0.2);
 }
 
+.slides__slide{
+    width: 170px;
+    height: 93px;
+    background: #fff;
+    margin: 10px 0px; 
+    border: 4px solid #bebebe;
+    border-radius: 5px;
+    position: relative;
+}
 
+.slides__slidenumber{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    background: #bebebe;
+    font-size: 11px;
+    color:#fff;
+    text-align: center;
+    font-style: normal;
+}
 
+.active .slides__slide{
+    border: 4px solid #cfa6a6;
+}
+
+.active .slides__slidenumber{
+    background: #cfa6a6;
+}
+
+.view_presentation{
+    height: 100%;
+    margin: -70px 0px 0px 225px;
+    position: relative;
+}
+
+.presentation_nav{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    height: 40px;
+    background: #919191;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}
+
+.presentation_nav__first{
+    float: left;
+    margin-left: 20px;
+}
+
+.presentation_nav__last{
+    float: right;
+    margin-right: 20px;
+}
+
+.presentation_container{
+    padding-top: 70px;
+}
 
 
 
