@@ -384,9 +384,40 @@ aside h2{
 
 .presentation_container{
     padding-top: 70px;
+    position: relative;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
+.presentation_container__prev, .presentation_container__next{
+    font-size: 43px;
+    color: #a2a2a2;
+    padding: 0px 20px;
+    position: absolute;
+    top:50%;
+}
+.presentation_container__next{
+    right: 0px;
+}
 
+.presentation_container__prev:hover, .presentation_container__next:hover{
+    color: #000;
+}
+
+.presentation_container__content{
+    height: calc(100% - 40px);
+    overflow: auto;
+}
+
+.step2{
+    display: none;
+}
+
+.step2{
+    height: 100%;
+}
 
 
 /* ==========================================================================
