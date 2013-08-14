@@ -59,44 +59,48 @@
         </script>
 
         <script id='presentation-detail-template' type='text/x-handlebars-template'>
-            <aside>
-                <h2>Слайды</h2>
-                <ul class='slides'>
-                    {{#each slides}}
-                        <li class='slides__slidewrapper {{#ifCond this.id 1}}active{{/ifCond}}'>
-                            <a href='#' class='slides__slide inline-block' data-slide-id={{this/id}}>
-                                <i class='slides__slidenumber'>{{this/id}}</i>
-                                <img src='{{this.preview}}' alt='{{this.title}}' class='slides__slideimage'/>
-                            </a>
-                        </li>
-                    {{/each}}
-                </ul>
-            </aside>
-            <div class='view_presentation'>
-                <div class='presentation_container'>
-                    <a href='#' class='presentation_container__prev'><i class="icon-chevron-left"></i></a>
-                    <a href='#' class='presentation_container__next'><i class="icon-chevron-right"></i></a>
-                    <div class='presentation_container__wrapper'>
-                        <div class='presentation_container__contentwrapper'>
-                            {{#each slides}}
-                                <div class='presentation_container__content'>
-                                    {{this.body}}
-                                </div>
-                            {{/each}}
+            <div id='splitter'>
+                <aside>
+                    <h2>Слайды</h2>
+                    <ul class='slides'>
+                        {{#each slides}}
+                            <li class='slides__slidewrapper {{#ifCond this.id 1}}active{{/ifCond}}'>
+                                <a href='#' class='slides__slide inline-block' data-slide-id={{this/id}}>
+                                    <i class='slides__slidenumber'>{{this/id}}</i>
+                                    <img src='{{this.preview}}' alt='{{this.title}}' class='slides__slideimage'/>
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </aside>
+                <div class='view_presentation'>
+                    <div class='presentation_container'>
+                        <a href='#' class='presentation_container__prev'><i class="icon-chevron-left"></i></a>
+                        <a href='#' class='presentation_container__next'><i class="icon-chevron-right"></i></a>
+                        <div class='presentation_container__wrapper'>
+                            <div class='presentation_container__contentwrapper'>
+                                {{#each slides}}
+                                    <div class='presentation_container__content'>
+                                        {{this.body}}
+                                    </div>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
+                    <nav class='presentation_nav'>
+                        <a href='#' class='presentation_nav__first'><i class="icon-fast-backward"></i></a>
+                        <span class='presentation_nav__text inline-block'>Слайд 1 / 12</span>
+                        <a href='#' class='presentation_nav__last'><i class="icon-fast-forward"></i></a>
+                    </nav>
                 </div>
-                <nav class='presentation_nav'>
-                    <a href='#' class='presentation_nav__first'><i class="icon-fast-backward"></i></a>
-                    <span class='presentation_nav__text inline-block'>Слайд 1 / 12</span>
-                    <a href='#' class='presentation_nav__last'><i class="icon-fast-forward"></i></a>
-                </nav>
             </div>
         </script>
 
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
         <script src="js/handlebars.js"></script>
+        <script src="js/splitter.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 

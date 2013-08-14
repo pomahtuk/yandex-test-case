@@ -38,6 +38,12 @@ var build_presentations_index = function () {
       container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
 
       change_step('step2');
+
+      $("#splitter").splitter({sizeLeft: 250});
+
+      $('.view_presentation').resize(function() {
+		container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
+      })
     })
 }
 
