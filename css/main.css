@@ -403,11 +403,14 @@ aside h2{
     color: #000;
 }
 
-.presentation_container__content{
+.presentation_container__contentwrapper{
     height: calc(100% - 40px);
+    overflow: hidden;
+}
+.presentation_container__content{
+    height: 100%;
     overflow: auto;
 }
-
 .step2{
     display: none;
 }
