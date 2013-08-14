@@ -69,6 +69,7 @@ $(function() {
     method:'GET',
     url:'./presentations.json'
   }).done(function(data) {
+  	presentations = data;
     build_presentations_index();
   }).error(function(){
     presentations = {
