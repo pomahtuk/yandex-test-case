@@ -80,7 +80,7 @@
                         <div class='presentation_container__wrapper'>
                             <div class='presentation_container__contentwrapper'>
                                 {{#each slides}}
-                                    <div class='presentation_container__content'>
+                                    <div class='presentation_container__content' data-slide-id={{this/id}}>
                                         {{{this.body}}}
                                     </div>
                                 {{/each}}

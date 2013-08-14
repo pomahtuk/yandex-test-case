@@ -33,7 +33,7 @@
                 }
             ],
             "options":{
-                "speed": 3000,
+                "speed": 300,
                 "transition": "fade"
             }
         },
@@ -70,7 +70,7 @@
                 }
             ],
             "options":{
-                "speed": 3000,
+                "speed": 300,
                 "transition": "fade"
             }
         }

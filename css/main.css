@@ -109,7 +109,7 @@ html{
 }
 
 header{
-    height: 70px;
+    height: 50px;
     background: #333333;
     padding: 0px 0px 0px 20px;
     position: relative;
@@ -130,14 +130,14 @@ header h1{
     margin: 0 20px;
     color: #fff;
     font-size: 18px;
-    line-height: 70px;
+    line-height: 50px;
 }
 
 header .user{
     float: right;
     color: #fff;
     font-size: 12px;
-    line-height: 70px;
+    line-height: 50px;
     font-weight: bold;
 }
 
@@ -337,7 +337,6 @@ header .user a:hover{
 
 .view_presentation{
     height: 100%;
-    margin: -70px 0px 0px 0px;
     position: relative;
 }
 
@@ -363,7 +362,6 @@ header .user a:hover{
 }
 
 .presentation_container{
-    padding-top: 70px;
     position: relative;
     height: 100%;
     -webkit-box-sizing: border-box;
@@ -404,7 +402,7 @@ header .user a:hover{
 }
 
 .step2{
-    height: 100%;
+    height: calc(100% - 50px);
 }
 
 #splitter {

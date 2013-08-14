@@ -12,7 +12,18 @@ var detail_source   = $("#presentation-detail-template").html();
 var detail_template = Handlebars.compile(detail_source);
 
 var init_slider = function (options) {
-
+    if (options == null) {
+        options = {
+            "speed": 300,
+            "transition": "fade"
+        };
+    };
+    console.log(options);
+    slide_width = $('.presentation_container__content').width();
+    $('.presentation_container__next').click(function(){
+        $('.presentation_container__prev').removeClass('hidden');
+        $('.presentation_container__contentwrapper').animate({'margin-left': -slide_width}, options.speed);
+    })
 }
 
 var build_presentations_index = function () {
@@ -23,7 +34,7 @@ var build_presentations_index = function () {
     container.find('.presentation__view').on('click', function() {
       var element   = $(this);
       var id        = element.data('presentation-id');
-      var resulting = {}
+      var resulting = {};
 
       for (_i = 0, _len = presentations.presentations.length; _i < _len; _i++) {
         presentation = presentations.presentations[_i];
@@ -44,7 +55,7 @@ var build_presentations_index = function () {
       $("#splitter").splitter({sizeLeft: 250});
 
       $('.view_presentation').resize(function() {
-		container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
+        container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
       });
 
       init_slider(resulting.options);
@@ -63,11 +74,11 @@ var change_step = function (step) {
     step = 'step1';
   }
   if (step == 'step1') {
-    $('.step2').hide()
-    $('.step1').show()
+    $('.step2').hide();
+    $('.step1').show();
   } else {
-    $('.step1').hide()
-    $('.step2').show()
+    $('.step1').hide();
+    $('.step2').show();
   }
 }
 
@@ -80,7 +91,7 @@ $(function() {
     method:'GET',
     url:'./presentations.json'
   }).done(function(data) {
-  	presentations = data;
+    presentations = data;
     build_presentations_index();
   }).error(function(){
     presentations = {
@@ -118,7 +129,7 @@ $(function() {
               }
           ],
           "options":{
-            "speed": 3000,
+            "speed": 300,
             "transition": "fade"
           }
         },
@@ -155,7 +166,7 @@ $(function() {
             }
           ],
           "options":{
-            "speed": 3000,
+            "speed": 1000,
             "transition": "fade"
           }
         }
