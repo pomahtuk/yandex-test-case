@@ -66,6 +66,7 @@
                         <li class='slides__slidewrapper {{#ifCond this.id 1}}active{{/ifCond}}'>
                             <a href='#' class='slides__slide inline-block' data-slide-id={{this/id}}>
                                 <i class='slides__slidenumber'>{{this/id}}</i>
+                                <img src='{{this.preview}}' alt='{{this.title}}' class='slides__slideimage'/>
                             </a>
                         </li>
                     {{/each}}
