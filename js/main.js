@@ -11,6 +11,9 @@ var index_template = Handlebars.compile(index_source);
 var detail_source   = $("#presentation-detail-template").html();
 var detail_template = Handlebars.compile(detail_source);
 
+var init_slider = function (options) {
+
+}
 
 var build_presentations_index = function () {
     var html      = index_template(presentations);
@@ -26,7 +29,6 @@ var build_presentations_index = function () {
         presentation = presentations.presentations[_i];
         if (presentation.id.toString() === id.toString()) {
           resulting = presentation;
-          console.log(presentation);
           break;
         }
       };
@@ -43,7 +45,10 @@ var build_presentations_index = function () {
 
       $('.view_presentation').resize(function() {
 		container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
-      })
+      });
+
+      init_slider(resulting.options);
+
     })
 }
 
@@ -91,7 +96,7 @@ $(function() {
                 "id": 1,
                 "preview": "http://lorempixel.com/170/93",
                 "title":"Slide 1, Presentation 1",
-                "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis tortor et nisi gravida auctor. Proin aliquam quis neque eu ornare. Integer hendrerit blandit nulla sit amet vestibulum. Nulla sit amet felis at lacus feugiat lacinia. Vestibulum posuere nisl eget egestas euismod. Fusce elementum viverra nibh, sit amet imperdiet turpis sollicitudin quis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras gravida sapien quis nisi interdum, vel posuere sem gravida. Quisque aliquet id ligula quis laoreet. Donec accumsan augue nec sem condimentum lacinia. Integer ut odio sed tortor sagittis bibendum imperdiet quis est. Maecenas augue justo, scelerisque nec nulla eget, bibendum bibendum sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+                "body": "<iframe width='560' height='315' src='http://www.youtube.com/embed/dDjeAc6Mi3M' frameborder='0' allowfullscreen></iframe>"
               },
               {
                 "id": 2,

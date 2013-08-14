@@ -75,13 +75,13 @@
                 </aside>
                 <div class='view_presentation'>
                     <div class='presentation_container'>
-                        <a href='#' class='presentation_container__prev'><i class="icon-chevron-left"></i></a>
+                        <a href='#' class='presentation_container__prev hidden'><i class="icon-chevron-left"></i></a>
                         <a href='#' class='presentation_container__next'><i class="icon-chevron-right"></i></a>
                         <div class='presentation_container__wrapper'>
                             <div class='presentation_container__contentwrapper'>
                                 {{#each slides}}
                                     <div class='presentation_container__content'>
-                                        {{this.body}}
+                                        {{{this.body}}}
                                     </div>
                                 {{/each}}
                             </div>
