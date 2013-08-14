@@ -404,12 +404,17 @@ aside h2{
 }
 
 .presentation_container__contentwrapper{
-    height: calc(100% - 40px);
     overflow: hidden;
+    width: 9999999999px;
 }
 .presentation_container__content{
     height: 100%;
     overflow: auto;
+    float: left;
+}
+.presentation_container__wrapper{
+    height: calc(100% - 40px);
+    overflow: hidden;
 }
 .step2{
     display: none;

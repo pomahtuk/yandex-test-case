@@ -1,3 +1,10 @@
+Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 var presentations = [];
 var index_source   = $("#presentation-index-template").html();
 var index_template = Handlebars.compile(index_source);
@@ -27,6 +34,8 @@ var build_presentations_index = function () {
       var html      = detail_template(resulting);
       var container = $('.step2');
       container.empty().append(html);
+
+      container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
 
       change_step('step2');
     })
