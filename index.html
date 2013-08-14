@@ -33,16 +33,18 @@
                     <input type='text' placeholder='Поиск…' class='search__input'>
                     <i class="search__icon icon-search"></i>
                 </div>
-                <div class='presentation inline-block'>
-                    <h2 class='presentation__maintitle'>Презентация 1</h3>
-                    <div class='presentation__description'>краткое описание</div>
-                    <div class='presentation__actions'>
-                        <a class='presentation__delete presentation__link' href='#'><i class="icon-edit"></i></i></a>
-                        <a class='presentation__view presentation__link' href='#'><i class="icon-eye-open"></i></i></a>
+                <div class='presentations'>
+                    <div class='presentation inline-block'>
+                        <h2 class='presentation__maintitle'>Презентация 1</h3>
+                        <div class='presentation__description'>краткое описание</div>
+                        <div class='presentation__actions'>
+                            <a class='presentation__delete presentation__link' href='#'><i class="icon-edit"></i></i></a>
+                            <a class='presentation__view presentation__link' href='#'><i class="icon-eye-open"></i></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class='presentation empty inline-block'>
-                    <a class='presentation__add inline-block' href='#'><i class="icon-plus"></i></i></a>
+                    <div class='presentation empty inline-block'>
+                        <a class='presentation__add inline-block' href='#'><i class="icon-plus"></i></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,10 +92,22 @@
             </div>
         </div>
 
-
+        <script id='presentation-index-template' type='text/x-handlebars-template'>
+            {{#each presentation}}
+                <div class='presentation inline-block'>
+                    <h2 class='presentation__maintitle'>{{this.title}}</h3>
+                    <div class='presentation__description'>{{this.description}}</div>
+                    <div class='presentation__actions'>
+                        <a class='presentation__delete presentation__link' href='#'><i class='icon-edit'></i></i></a>
+                        <a class='presentation__view presentation__link' href='#'><i class='icon-eye-open'></i></i></a>
+                    </div>
+                </div>
+            {{/each}}
+        </script>
 
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/handlebars.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 

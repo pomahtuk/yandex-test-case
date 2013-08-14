@@ -127,8 +127,7 @@ header i{
 }
 
 header h1{
-    width: 960px;
-    margin: 0 auto;
+    margin: 0 20px;
     color: #fff;
     font-size: 18px;
     line-height: 70px;
@@ -147,13 +146,11 @@ header .user a{
 }
 
 header .user a:hover{
-    border: 1px solid;
+    border-bottom: 1px solid;
 }
 
 
 .container{
-    width: 940px;
-    margin: 0 auto;
     padding: 20px;
 }
 

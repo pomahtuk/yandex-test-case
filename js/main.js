@@ -1,10 +1,9 @@
 $(function() {
-	$.ajax({
-		dataType: 'json',
-		method:'GET',
-		url:'./presentations.json'
-	}).done(function(data) {
-	  data = JSON.parse(data);
+  $.ajax({
+    dataType: 'json',
+    method:'GET',
+    url:'./presentations.json'
+  }).done(function(data) {
     console.log(data);
-	});
+  });
 })
