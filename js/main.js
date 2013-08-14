@@ -1,16 +1,23 @@
+var presentations = [];
+
 $(function() {
   $.ajax({
     dataType: 'json',
     method:'GET',
     url:'./presentations.json'
-  }).complete(function(data) {
-    console.log(data);
-    if (typeof data === "undefined" || data === null) {
-      data = {
+  }).done(function(data) {
+    presentations = data;
+    var source   = $("#presentation-index-template").html();
+    var template = Handlebars.compile(source);
+    var html     = template(presentations);
+    console.log(html);
+    $('.step1 .presentations').html(html);
+  }).error(function(){
+    presentations = {
         "presentations": [
             {
-                "title":"presentations",
-                "description": "test",
+                "title":"Presentation 1",
+                "description": "test description to presentation 1",
                 "preview": "http://lorempixel.com/200/110",
                 "slides": [
                     {
@@ -36,8 +43,8 @@ $(function() {
                 }
             },
             {
-                "title":"presentations",
-                "description": "test",
+                "title":"Presentation 2",
+                "description": "test description to presentation 2",
                 "preview": "http://lorempixel.com/200/110",
                 "slides": [
                     {
@@ -63,12 +70,10 @@ $(function() {
                 }
             }
         ]
-      }
     };
     var source   = $("#presentation-index-template").html();
     var template = Handlebars.compile(source);
-    var html     = template(data);
-    console.log(html);
-    $('.step1 .presentations').html(html);
+    var html     = template(presentations);
+    $('.step1 .presentations').html(html); 
   });
 })
