@@ -193,6 +193,11 @@ header .user a:hover{
     color: #a2a2a2;
 }
 
+.presentations_sortable{
+    margin: 0px;
+    padding: 0px;
+}
+
 .presentation{
     width: 234px;
     height: 134px;
@@ -272,14 +277,33 @@ header .user a:hover{
     margin-top: 35px;
 }
 
-.presentation.empty{
+.presentation.empty, .sortable-placeholder{
     background: transparent;
     width: 240px;
     height: 130px;
     border: 2px dashed #b5b5b5;
 }
 
-.presentation.empty:after{
+.sortable-placeholder{
+    width: 234px;
+    height: 134px;
+    position: relative;
+    margin: 0px 40px 45px 0px;
+
+    border-radius: 5px;
+
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    *display: inline;
+}
+
+.sortable-dragging{
+    opacity: 0.7;
+}
+
+.presentation.empty:after, .sortable-placeholder:after{
     display: none;
 }
 

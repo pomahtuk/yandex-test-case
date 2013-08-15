@@ -41,18 +41,20 @@
         </div>
 
         <script id='presentation-index-template' type='text/x-handlebars-template'>
-            {{#each presentations}}
-                {{#if this.visible}}
-                    <div class='presentation inline-block'>
-                        <h2 class='presentation__maintitle'>{{this.title}}</h3>
-                        <div class='presentation__description'>{{this.description}}</div>
-                        <div class='presentation__actions'>
-                            <a class='presentation__edit presentation__link' href='#' data-presentation-id={{this/id}}><i class='icon-edit'></i></i></a>
-                            <a class='presentation__view presentation__link' href='#' data-presentation-id={{this/id}}><i class='icon-eye-open'></i></i></a>
-                        </div>
-                    </div>
-                {{/if}}
-            {{/each}}
+            <ul class='presentations_sortable inline-block'>
+                {{#each presentations}}
+                    {{#if this.visible}}
+                        <li class='presentation inline-block'>
+                            <h2 class='presentation__maintitle'>{{this.title}}</h3>
+                            <div class='presentation__description'>{{this.description}}</div>
+                            <div class='presentation__actions'>
+                                <a class='presentation__edit presentation__link' href='#' data-presentation-id={{this/id}}><i class='icon-edit'></i></i></a>
+                                <a class='presentation__view presentation__link' href='#' data-presentation-id={{this/id}}><i class='icon-eye-open'></i></i></a>
+                            </div>
+                        </li>
+                    {{/if}}
+                {{/each}}
+            </ul>
             <div class='presentation empty inline-block'>
                 <a class='presentation__add inline-block' href='#'><i class='icon-plus'></i></i></a>
             </div>
@@ -101,6 +103,7 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
         <script src="js/handlebars.js"></script>
         <script src="js/splitter.js"></script>
+        <script src="js/jquery.sortable.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
