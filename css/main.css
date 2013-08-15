@@ -379,6 +379,8 @@ header .user a:hover{
     padding: 0px 20px;
     position: absolute;
     top:50%;
+    margin-top: -43px;
+    z-index: 9;
 }
 .presentation_container__next{
     right: 0px;
