@@ -30,7 +30,7 @@
 
     var post_anim = function(current_slide) {
       $('.slides__slide').parents('li').removeClass('active');
-      $('.slides__slide[data-slide-id='+current_slide+']').parents('li').addClass('active');
+      $('.slides__slide[data-slide-order='+current_slide+']').parents('li').addClass('active');
       $('.presentation_nav__text ').text('Слайд ' + current_slide + ' / ' + presentation.slides.length);
       anumation_progress = false;
     }
@@ -38,12 +38,14 @@
     * Left and Right arrows click
     */
     $('.presentation_nav__text ').text('Слайд ' + current_slide + ' / ' + presentation.slides.length)
+
     $('.presentation_container__next').click(function(){
       if ( (current_slide < presentation.slides.length) && (anumation_progress == false) )  {
         anumation_progress = true
         var slide_width = $('.presentation_container__content').width();
         $('.presentation_container__contentwrapper').animate({'left': '-='+slide_width}, presentation.options.speed, function(){
           current_slide +=1;
+          console.log(current_slide);
           $('.presentation_container__prev, .presentation_nav__first').removeClass('hidden');
           post_anim(current_slide);
         });
@@ -68,7 +70,7 @@
     $('.presentation_nav__first').click(function(){
       if (anumation_progress == false) {
         var slide_width = $('.presentation_container__content').width();
-        var hidden_slides = $('.presentation_container__content:not([data-slide-id='+current_slide+'], [data-slide-id=1])')
+        var hidden_slides = $('.presentation_container__content:not([data-slide-order='+current_slide+'], [data-slide-order=1])')
         hidden_slides.hide()
         $('.presentation_container__contentwrapper').css({'left': -slide_width + 'px'});
         $('.presentation_container__contentwrapper').animate({'left': 0}, presentation.options.speed, function(){
@@ -84,7 +86,7 @@
       if (anumation_progress == false) {
         var slide_width = $('.presentation_container__content').width();
         var last_slide  = presentation.slides.length-1
-        var hidden_slides = $('.presentation_container__content:not([data-slide-id='+current_slide+'], [data-slide-id='+last_slide+'])')
+        var hidden_slides = $('.presentation_container__content:not([data-slide-order='+current_slide+'], [data-slide-order='+last_slide+'])')
         hidden_slides.hide()
         $('.presentation_container__contentwrapper').css({'left':'0px'});
         $('.presentation_container__contentwrapper').animate({'left': -slide_width}, presentation.options.speed, function(){
@@ -103,9 +105,9 @@
     $('.slides__slide').click(function(){
       if (anumation_progress == false) {
         var slide    = $(this);
-        var slide_id = slide.data('slide-id');
+        var slide_id = slide.data('slide-order');
         var slide_width = $('.presentation_container__content').width();
-        var hidden_slides = $('.presentation_container__content:not([data-slide-id='+current_slide+'], [data-slide-id='+slide_id+'])')
+        var hidden_slides = $('.presentation_container__content:not([data-slide-order='+current_slide+'], [data-slide-order='+slide_id+'])')
         hidden_slides.hide()
         if (slide_id > current_slide) {
           $('.presentation_container__contentwrapper').css({'left':'0px'});
@@ -156,85 +158,97 @@
   }
 
   var build_presentations_index = function () {
-      var html      = index_template(presentations);
-      var container = $('.step1 .presentations');
-      container.html(html);
+    var html      = index_template(presentations);
+    var container = $('.step1 .presentations');
+    container.html(html);
 
-      $('.presentations_sortable').sortable({placeholder: "sortable-placeholder", forceHelperSize: true}).bind('sortupdate', function(e, ui) {
-          var order = {};
+    $('.presentations_sortable').sortable({placeholder: "sortable-placeholder", forceHelperSize: true}).bind('sortupdate', function(e, ui) {
+        var order = {};
 
-          $('li.presentation').each(function (e) {
-            var order_el = {};
-            var id       = $(this).attr('id').split('_')[1];
-            order[id] = $(this).index() + 1;
-          })
+        $('li.presentation').each(function (e) {
+          var order_el = {};
+          var id       = $(this).attr('id').split('_')[1];
+          order[id] = $(this).index() + 1;
+        })
 
-          var _i, _len;
-          for (_i = 0, _len = presentations.presentations.length; _i < _len; _i++) {
-            var presentation = presentations.presentations[_i];
-            presentation.order = order[presentation.id];
-          };
-
-          localStorage.setItem("presentations", JSON.stringify(presentations));
-
-      });
-
-      init_search();
-
-      container.find('.presentation__view').on('click', function () {
-        var element   = $(this);
-        var id        = element.data('presentation-id');
-        var resulting = {};
         var _i, _len;
-
         for (_i = 0, _len = presentations.presentations.length; _i < _len; _i++) {
           var presentation = presentations.presentations[_i];
-          if (presentation.id.toString() === id.toString()) {
-            resulting = presentation;
-            break;
-          }
+          presentation.order = order[presentation.id];
         };
 
-        var html      = detail_template(resulting);
-        var container = $('.step2');
-        container.empty().append(html);
+        localStorage.setItem("presentations", JSON.stringify(presentations));
 
-        container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
+    });
 
-        change_step('step2');
+    init_search();
 
-        $("#splitter").splitter({sizeLeft: 250});
+    container.find('.presentation__view').on('click', function () {
+      var element   = $(this);
+      var id        = element.data('presentation-id');
+      var resulting = {};
+      var _i, _len;
 
-        $('.view_presentation').resize(function() {
-          container.find('.presentation_container__content').width(document.body.clientWidth - container.find('aside').width());
-        });
+      for (_i = 0, _len = presentations.presentations.length; _i < _len; _i++) {
+        var presentation = presentations.presentations[_i];
+        if (presentation.id.toString() === id.toString()) {
+          resulting = presentation;
+          break;
+        }
+      };
 
-        init_slider(resulting);
+      var html      = detail_template(resulting);
+      var container = $('.step2');
+      container.empty().append(html);
 
-        $('.slides').sortable({axis: "y"}).bind('sortupdate', function(e, ui) {
-            $('li.slides__slide').each(function (e) {
-            var order_el = {}
-            var id       = $(this).attr('id').split('_')[1];
-            order[id]    = $(this).index() + 1;
+      change_step('step2');
 
-            var _i, _len;
-            for (_i = 0, _len = resulting.slides.length; _i < _len; _i++) {
-              var slide   = esulting.slides[_i];
-              slide.order = order[slide.id];
-            };
+      $("#splitter").splitter({sizeLeft: 250});
 
-            //localStorage.setItem("presentations", JSON.stringify(presentations));
+      $('.view_presentation').resize(function() {
+        var slide_width = document.body.clientWidth - container.find('aside').width();
+        container.find('.presentation_container__content').width(slide_width);
+        $('.presentation_container__contentwrapper').css({'left': -slide_width*(current_slide - 1) + 'px'});
+      }).resize();
 
-          });
-        });
-      })
-  }
+      init_slider(resulting);
 
-  // var rebuild_presentations_index = function () {
-  //   var html      = index_template(presentations);
-  //   var container = $('.step1 .presentations');
-  //   container.empty().append(html);
-  // }
+      $('.slides').sortable({axis: "y"}).bind('sortupdate', function(e, ui) {
+        var order = {};
+
+        $('li.slides__slidewrapper').each(function (e) {
+          var elem     = $(this);
+          var order_el = {};
+          var id       = elem.attr('id').split('_')[1];
+          var order_i  = elem.index() + 1;
+          order[id]    = order_i;
+          elem.find('.slides__slide').attr('data-slide-order', order_i).find('.slides__slidenumber').text(order_i);
+        })
+
+        var _i, _len;
+        for (_i = 0, _len = resulting.slides.length; _i < _len; _i++) {
+          var slide = resulting.slides[_i];
+          slide.order = order[slide.id];
+        };
+
+        resulting.slides.sort(sort_order);
+        localStorage.setItem("presentations", JSON.stringify(presentations));
+
+        var new_array, _j, _lenj;
+
+        new_array = [];
+
+        for (_j = 0, _lenj = resulting.slides.length; _j < _lenj; _j++) {
+          var slide = resulting.slides[_j];
+          new_array[slide.order] = "<div class='presentation_container__content' data-slide-id="+slide.id+" data-slide-order="+slide.order+">" + $(".presentation_container__content[data-slide-id=" + slide.id + "]").html() + "</div>";
+        }
+
+        $('.presentation_container__contentwrapper').html(new_array.join(''));
+        $('.view_presentation').resize();
+
+      });
+    });
+  };
 
   var change_step = function (step) {
     if (step == null) {
@@ -384,6 +398,7 @@
     $('.js-show_index').click(function () {
       change_step('step1');
     });
+
     if (Modernizr.localstorage) {
       if (localStorage.getItem("presentations") === null) {
         fallback()

@@ -65,8 +65,8 @@
                     <ul class='slides'>
                         {{#each slides}}
                             <li class='slides__slidewrapper {{#ifCond this.id 1}}active{{/ifCond}}' id='slide_{{this/id}}'>
-                                <a href='#' class='slides__slide inline-block' data-slide-id={{this/id}}>
-                                    <i class='slides__slidenumber'>{{this/id}}</i>
+                                <a href='#' class='slides__slide inline-block' data-slide-id={{this/id}} data-slide-order={{this/order}}>
+                                    <i class='slides__slidenumber'>{{this/order}}</i>
                                     <img src='{{this.preview}}' alt='{{this.title}}' class='slides__slideimage'/>
                                 </a>
                             </li>
@@ -80,7 +80,7 @@
                         <div class='presentation_container__wrapper'>
                             <div class='presentation_container__contentwrapper'>
                                 {{#each slides}}
-                                    <div class='presentation_container__content' data-slide-id={{this/id}}>
+                                    <div class='presentation_container__content' data-slide-id={{this/id}} data-slide-order={{this/order}}>
                                         {{{this.body}}}
                                     </div>
                                 {{/each}}

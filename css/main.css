@@ -369,6 +369,9 @@ header .user a:hover{
 .view_presentation{
     height: 100%;
     position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .presentation_nav{
@@ -436,6 +439,7 @@ header .user a:hover{
 
 .step2{
     height: 100%;
+    width: 100%;
 }
 
 #splitter {
