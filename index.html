@@ -44,7 +44,7 @@
             <ul class='presentations_sortable inline-block'>
                 {{#each presentations}}
                     {{#if this.visible}}
-                        <li class='presentation inline-block'>
+                        <li class='presentation inline-block' id='presentation_{{this/id}}'>
                             <h2 class='presentation__maintitle'>{{this.title}}</h3>
                             <div class='presentation__description'>{{this.description}}</div>
                             <div class='presentation__actions'>
@@ -103,7 +103,8 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
         <script src="js/handlebars.js"></script>
         <script src="js/splitter.js"></script>
-        <script src="js/jquery.sortable.min.js"></script>
+        <!--<script src="js/jquery.sortable.min.js"></script>-->
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 

@@ -288,7 +288,7 @@ header .user a:hover{
     width: 234px;
     height: 134px;
     position: relative;
-    margin: 0px 40px 45px 0px;
+    margin: 0px 36px 45px 0px;
 
     border-radius: 5px;
 
@@ -472,6 +472,16 @@ aside h2{
     margin: 15px 0px 0px 0px;
     color: #333333;
     text-transform: uppercase;
+}
+
+aside .sortable-placeholder{
+    width: 80%;
+    height: auto;
+    background: #fff;
+    margin: 10px 0px; 
+    border: 4px solid #bebebe;
+    border-radius: 5px;
+    position: relative;
 }
 
 img.slides__slideimage {
