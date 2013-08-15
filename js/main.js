@@ -45,7 +45,6 @@
         var slide_width = $('.presentation_container__content').width();
         $('.presentation_container__contentwrapper').animate({'left': '-='+slide_width}, presentation.options.speed, function(){
           current_slide +=1;
-          console.log(current_slide);
           $('.presentation_container__prev, .presentation_nav__first').removeClass('hidden');
           post_anim(current_slide);
         });
@@ -85,7 +84,8 @@
     $('.presentation_nav__last').click(function(){
       if (anumation_progress == false) {
         var slide_width = $('.presentation_container__content').width();
-        var last_slide  = presentation.slides.length-1
+        var last_slide  = presentation.slides.length
+        console.log(last_slide);
         var hidden_slides = $('.presentation_container__content:not([data-slide-order='+current_slide+'], [data-slide-order='+last_slide+'])')
         hidden_slides.hide()
         $('.presentation_container__contentwrapper').css({'left':'0px'});
@@ -94,7 +94,7 @@
           $('.presentation_container__prev, .presentation_nav__first').removeClass('hidden');
           post_anim(current_slide);
           hidden_slides.show()
-          $('.presentation_container__contentwrapper').css({'left': - last_slide * slide_width + 'px'});
+          $('.presentation_container__contentwrapper').css({'left': - (last_slide - 1) * slide_width + 'px'});
         });
         $('.presentation_container__next, .presentation_nav__last').addClass('hidden');
       };
