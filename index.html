@@ -47,7 +47,7 @@
                             <div class='presentation__description'>{{this.description}}</div>
                             <div class='presentation__actions'>
                                 <a class='presentation__edit presentation__link' href='#' data-presentation-id={{this/id}}><i class='icon-edit'></i></i></a>
-                                <a class='presentation__view presentation__link' href='#' data-presentation-id={{this/id}}><i class='icon-eye-open'></i></i></a>
+                                <a class='presentation__view presentation__link' href='#!{{this/id}}' data-presentation-id={{this/id}}><i class='icon-eye-open'></i></i></a>
                             </div>
                         </li>
                     {{/if}}
@@ -65,7 +65,7 @@
                     <ul class='slides'>
                         {{#each slides}}
                             <li class='slides__slidewrapper {{#ifCond this.id 1}}active{{/ifCond}}' id='slide_{{this/id}}'>
-                                <a href='#' class='slides__slide inline-block' data-slide-id={{this/id}} data-slide-order={{this/order}}>
+                                <a href='#!{{this/id}}' class='slides__slide inline-block' data-slide-id={{this/id}} data-slide-order={{this/order}}>
                                     <i class='slides__slidenumber'>{{this/order}}</i>
                                     <img src='{{this.preview}}' alt='{{this.title}}' class='slides__slideimage'/>
                                 </a>
@@ -101,6 +101,7 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
         <script src="js/handlebars.js"></script>
         <script src="js/splitter.js"></script>
+        <script src="js/jquery.ba-hashchange.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
