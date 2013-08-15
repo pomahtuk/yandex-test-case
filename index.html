@@ -10,8 +10,6 @@
         <meta name="description" content="I shoul probably write a complicated description later">
         <meta name="viewport" content="width=device-width">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -66,7 +64,7 @@
                     <h2>Слайды</h2>
                     <ul class='slides'>
                         {{#each slides}}
-                            <li class='slides__slidewrapper {{#ifCond this.id 1}}active{{/ifCond}}'>
+                            <li class='slides__slidewrapper {{#ifCond this.id 1}}active{{/ifCond}}' id='slide_{{this/id}}'>
                                 <a href='#' class='slides__slide inline-block' data-slide-id={{this/id}}>
                                     <i class='slides__slidenumber'>{{this/id}}</i>
                                     <img src='{{this.preview}}' alt='{{this.title}}' class='slides__slideimage'/>
@@ -103,7 +101,6 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
         <script src="js/handlebars.js"></script>
         <script src="js/splitter.js"></script>
-        <!--<script src="js/jquery.sortable.min.js"></script>-->
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>

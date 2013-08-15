@@ -164,9 +164,9 @@
           var order = {};
 
           $('li.presentation').each(function (e) {
-            var order_el = {}
+            var order_el = {};
             var id       = $(this).attr('id').split('_')[1];
-            order[id] = $(this).index() + 1
+            order[id] = $(this).index() + 1;
           })
 
           var _i, _len;
@@ -215,7 +215,16 @@
             $('li.slides__slide').each(function (e) {
             var order_el = {}
             var id       = $(this).attr('id').split('_')[1];
-            order[id] = $(this).index() + 1
+            order[id]    = $(this).index() + 1;
+
+            var _i, _len;
+            for (_i = 0, _len = resulting.slides.length; _i < _len; _i++) {
+              var slide   = esulting.slides[_i];
+              slide.order = order[slide.id];
+            };
+
+            //localStorage.setItem("presentations", JSON.stringify(presentations));
+
           });
         });
       })
