@@ -21,6 +21,10 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    padding-top: 50px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /*
@@ -111,8 +115,11 @@ html{
 header{
     height: 50px;
     background: #333333;
-    padding: 0px 0px 0px 20px;
-    position: relative;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
     z-index: 2;
 }
 
@@ -364,9 +371,6 @@ header .user a:hover{
 .presentation_container{
     position: relative;
     height: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 .presentation_container__prev, .presentation_container__next{
@@ -387,6 +391,9 @@ header .user a:hover{
 .presentation_container__contentwrapper{
     overflow: hidden;
     width: 9999999999px;
+    position: relative;
+    top:0px;
+    left:0px;
 }
 .presentation_container__content{
     height: 100%;
@@ -402,7 +409,7 @@ header .user a:hover{
 }
 
 .step2{
-    height: calc(100% - 50px);
+    height: 100%;
 }
 
 #splitter {
