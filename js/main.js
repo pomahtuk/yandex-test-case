@@ -5,10 +5,10 @@ Handlebars.registerHelper('ifCond', function(v1, v2, options) {
   return options.inverse(this);
 });
 
-var presentations = [];
-var current_slide = 1;
-var index_source   = $("#presentation-index-template").html();
-var index_template = Handlebars.compile(index_source);
+var presentations   = [];
+var current_slide   = 1;
+var index_source    = $("#presentation-index-template").html();
+var index_template  = Handlebars.compile(index_source);
 var detail_source   = $("#presentation-detail-template").html();
 var detail_template = Handlebars.compile(detail_source);
 
